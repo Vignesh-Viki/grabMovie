@@ -10,8 +10,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "qer"
-    "start": "node index.js"
+
+  
   },
   "keywords": [
     "qwe"
