@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+	
+	$(document).ready(function(){
+
+	    $("#login").click(function(){
+			var data = {};
+			data.password = $("#password").val();
+			data.email = $("#email").val();
+			
+			$.ajax({
+				type: 'POST',
+				data: JSON.stringify(data),
+		        contentType: 'application/json',
+                url: '/logindb',						
+                success: function(data) {
+                      if(data.code==200){
+                     	 window.location = "./main?username=" + data.username
+                      }
+                      else{
+                      	alert("Invalid User")
+                      }
+                }
+            });
+
+    	});
+    });
+</script>
+    <div style="height:80px;border:1px;background-color:grey;">
+      <h2 style="display:inline">GrabMovie</h2> 
+    </div><br><br>
+	<h1>Login</h1>	
+		Email : <input id="email" type="email" name="email"><br>
+		Password : <input id="password" type="password" name="password"><br>
+		<button id="login" class="btn-success"> Login </button> 
+</body>
+</html>
