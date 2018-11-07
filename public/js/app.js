@@ -21,12 +21,36 @@
         success: function(data) {
           if(data=="success"){
             if(addORremove == 'add'){
+              var temp;
               $('#like'+id).removeClass("btn-primary");
               $('#dislike'+id).removeClass("btn-primary");
               $(str).addClass("btn-primary");
+
+              temp = '#likedMovie'
+               content = $(temp).val()
+               id = ' ' + id
+               content = content.replace(id,"")
+               $(temp).val(content)
+              
+              temp = '#dislikedMovie'
+               content = $(temp).val()
+               id = ' ' + id
+               content = content.replace(id,"")
+               $(temp).val(content)
+
+              temp = '#' + op + 'dMovie'
+              content = $(temp).val()
+              content += ' ' + id
+              $(temp).val(content)
+
             }else{
-              // console.log("hi")
+              console.log("hi")
                $(str).removeClass("btn-primary");
+               temp = '#' + op + 'dMovie'
+               content = $(temp).val()
+               id = ' ' + id
+               content = content.replace(id,"")
+               $(temp).val(content)
             }
           }
         }
@@ -101,7 +125,7 @@
             genres = result["genres"]
             var content = $("#genre").html();
 
-            for (var i = 0; i < 10 ; i++) {
+            for (var i = 0; i < genres.length ; i++) {
               content += '<option id="' + genres[i]['id'] + '" value="' + genres[i]['id'] + '"> ' + genres[i]['name'] + ' </option>'
               $("#genre").html(content)
             }
@@ -109,7 +133,36 @@
 
   }
 
+
+  function getRegion(){
+
+    console.log("hr")
+    
+    searchURL = "https://pkgstore.datahub.io/core/country-list/data_csv/data/d7c9d7cfb42cb69f4422dec222dbbaa8/data_csv.csv"    
+    $.ajax({url: searchURL,method:"GET",success: function(result){
+            
+
+          regions = result.split("\n")
+          // alert(regions.length)
+          var content = $("#region").html();
+
+          for (var i = 1; i < regions.length ; i++) {
+              region = regions[i].split(',')
+              content += "<option id='" + region[0] + "' value='" + region[1] + "'> " + region[0] + " </option>"
+              $("#region").html(content)
+            }
+
+
+    }});    
+
+  }
+
+
+
+
   $(document).ready(function(){
+
+    getRegion()
 
     getPref();
 
@@ -124,11 +177,19 @@
     })
 
     $( "#genre" ).change(function() {
-      id = $("select option:selected").val()
+      id = $("p1 select option:selected").val()
       // alert(id)
-      searchURL = "https://api.themoviedb.org/3/discover/movie?api_key=82fcbf7b36ecd002c7e286194ee9c0f1&with_genres=" + id
+      searchURL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.asc&api_key=82fcbf7b36ecd002c7e286194ee9c0f1&with_genres=" + id
       displayMovie(searchURL);  
     });
+
+
+    $( "#region" ).change(function() {
+      id = $("p2 select option:selected").val()
+      searchURL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.asc&api_key=82fcbf7b36ecd002c7e286194ee9c0f1&region=" + id
+      displayMovie(searchURL);  
+    });
+
 
     // $().c(function(){
 
