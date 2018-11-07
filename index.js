@@ -1,16 +1,24 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 var mysql = require('mysql');
 
 app.use(bodyParser.json({ type: 'application/json' }))
 
 var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
+    host: "db4free.net",
+    user: "rootuuu",
+    password: "passw0rd",
     database: "movieee"
 });
+
+
+// var con = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "",
+//     database: "movieee"
+// });
 
 con.connect();
 

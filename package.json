@@ -10,12 +10,19 @@
   },
   "devDependencies": {},
   "scripts": {
-
-  
+    "start" : "node index.js"
   },
   "keywords": [
-    "qwe"
+    
   ],
   "author": "qwe",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vignesh-Viki/grabMovie.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Vignesh-Viki/grabMovie/issues"
+  },
+  "homepage": "https://github.com/Vignesh-Viki/grabMovie#readme"
 }
