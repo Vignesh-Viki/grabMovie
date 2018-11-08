@@ -91,10 +91,12 @@
               id = movies[i]["id"]
               title = movies[i]["original_title"]
               overview = movies[i]["overview"]
+              ratings = movies[i]["vote_average"]
+              rdate = movies[i]["release_date"]
               content = $("#displayMovie").html();
               like = "like"
               dislike = "dislike"
-              content += '<br><div style="border: 1px solid;">  <h3>' + title + '</h3> <br> ' + overview + ' <br> <button onclick="likedislikeop(' + 
+              content += '<br><div style="border: 1px solid;">  <h3>' + title + '</h3> <br> ' + overview + ' <br><br> <b>Ratings:</b> '+ ratings +'<br> <br> <b>Release Date:</b> '+ rdate +' <br> <button onclick="likedislikeop(' + 
               id + ',' + like + ')"  id="like' + id + '" class="btn-default">like</button> <button  onclick="likedislikeop(' + id + ',' + dislike + ')" id="dislike' + id + '" class="btn-default">dislike</button> </div>'
 
               $("#displayMovie").html(content)
