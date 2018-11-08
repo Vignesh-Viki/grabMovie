@@ -4,7 +4,7 @@
     str = '#' + op + id
     // alert($(str).attr('class'))
 
-    if($(str).attr('class').indexOf('btn-primary')==-1)
+    if($(str).attr('class').indexOf('btn-success')==-1)
       addORremove = 'add'
     else
       addORremove = 'remove'
@@ -22,9 +22,9 @@
           if(data=="success"){
             if(addORremove == 'add'){
               var temp;
-              $('#like'+id).removeClass("btn-primary");
-              $('#dislike'+id).removeClass("btn-primary");
-              $(str).addClass("btn-primary");
+              $('#like'+id).removeClass("btn-success");
+              $('#dislike'+id).removeClass("btn-success");
+              $(str).addClass("btn-success");
 
               temp = '#likedMovie'
                content = $(temp).val()
@@ -45,7 +45,7 @@
 
             }else{
               console.log("hi")
-               $(str).removeClass("btn-primary");
+               $(str).removeClass("btn-success");
                temp = '#' + op + 'dMovie'
                content = $(temp).val()
                id = ' ' + id
@@ -108,11 +108,11 @@
             var i;
             for (i = 0; i < likedMovie.length; i++) {
                 str = "#like" + likedMovie[i]
-                $(str).addClass("btn-primary");
+                $(str).addClass("btn-success");
             }
             for (i = 0; i < dislikedMovie.length; i++) {
                 str = "#dislike" + dislikedMovie[i]
-                $(str).addClass("btn-primary");
+                $(str).addClass("btn-success");
             }
 
         }});
